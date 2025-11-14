@@ -586,47 +586,74 @@ window.removeEventListener('scroll', () => {});
 window.addEventListener('scroll', optimizedScrollHandler, { passive: true });
 
 // === CV DROPDOWN MENU ===
-const cvDropdowns = document.querySelectorAll('.cv-dropdown');
-
-cvDropdowns.forEach(dropdown => {
-    const btn = dropdown.querySelector('.cv-dropdown-btn');
+function initCVDropdowns() {
+    const cvDropdowns = document.querySelectorAll('.cv-dropdown');
     
-    if (btn) {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            // Close other dropdowns
-            cvDropdowns.forEach(d => {
-                if (d !== dropdown) {
-                    d.classList.remove('active');
+    console.log('Initializing CV dropdowns, found:', cvDropdowns.length);
+
+    cvDropdowns.forEach((dropdown, index) => {
+        const btn = dropdown.querySelector('.cv-dropdown-btn');
+        
+        console.log(`Dropdown ${index}:`, dropdown, 'Button:', btn);
+        
+        if (btn) {
+            // Remove any existing listeners
+            const newBtn = btn.cloneNode(true);
+            btn.parentNode.replaceChild(newBtn, btn);
+            
+            newBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                console.log('Dropdown button clicked!');
+                
+                // Close other dropdowns
+                cvDropdowns.forEach(d => {
+                    if (d !== dropdown) {
+                        d.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current dropdown
+                const isActive = dropdown.classList.contains('active');
+                if (isActive) {
+                    dropdown.classList.remove('active');
+                    console.log('Dropdown closed');
+                } else {
+                    dropdown.classList.add('active');
+                    console.log('Dropdown opened');
                 }
             });
-            // Toggle current dropdown
-            dropdown.classList.toggle('active');
-        });
-    }
-});
+        }
+    });
 
-// Close dropdown when clicking outside
-document.addEventListener('click', (e) => {
-    if (!e.target.closest('.cv-dropdown')) {
-        cvDropdowns.forEach(dropdown => {
-            dropdown.classList.remove('active');
-        });
-    }
-});
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.cv-dropdown')) {
+            cvDropdowns.forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+        }
+    });
 
-// Close dropdown when clicking on a link
-document.querySelectorAll('.cv-dropdown-item').forEach(item => {
-    item.addEventListener('click', () => {
-        cvDropdowns.forEach(dropdown => {
-            dropdown.classList.remove('active');
+    // Close dropdown when clicking on a link
+    document.querySelectorAll('.cv-dropdown-item').forEach(item => {
+        item.addEventListener('click', (e) => {
+            console.log('CV link clicked:', item.href);
+            cvDropdowns.forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+            // Let the download happen
         });
     });
-});
+}
 
 // === INITIALIZE ===
 document.addEventListener('DOMContentLoaded', () => {
     console.log('CV Digital chargé avec succès!');
+    
+    // Initialize CV dropdowns
+    initCVDropdowns();
     
     // Initialize mobile bottom nav
     if (window.innerWidth <= 768 && mobileBottomNav) {
