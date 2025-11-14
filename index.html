@@ -33,7 +33,21 @@
                 <li><a href="#projects" class="nav-link">Projets</a></li>
                 <li><a href="#education" class="nav-link">Formation</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
-                <li><a href="cv_ghali_lahlou.pdf" download class="btn-download"><i class="fas fa-download"></i> CV PDF</a></li>
+                <li class="cv-download-wrapper">
+                    <div class="cv-dropdown">
+                        <button class="btn-download cv-dropdown-btn">
+                            <i class="fas fa-download"></i> CV PDF <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="cv-dropdown-menu">
+                            <a href="cv_ghali_lahlou_vscode_fr.pdf" download class="cv-dropdown-item">
+                                <i class="fas fa-file-pdf"></i> CV Français (PDF)
+                            </a>
+                            <a href="cv_ghali_lahlou_vscode_en.pdf" download class="cv-dropdown-item">
+                                <i class="fas fa-file-pdf"></i> CV English (PDF)
+                            </a>
+                        </div>
+                    </div>
+                </li>
             </ul>
             <button class="hamburger" id="hamburger">
                 <span></span>
@@ -64,9 +78,21 @@
                         <a href="#contact" class="btn btn-primary">
                             <i class="fas fa-envelope"></i> Me Contacter
                         </a>
-                        <a href="cv_ghali_lahlou.pdf" download class="btn btn-secondary">
-                            <i class="fas fa-download"></i> Télécharger CV
-                        </a>
+                        <div class="cv-download-wrapper">
+                            <div class="cv-dropdown">
+                                <button class="btn btn-secondary cv-dropdown-btn">
+                                    <i class="fas fa-download"></i> Télécharger CV <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="cv-dropdown-menu">
+                                    <a href="cv_ghali_lahlou_vscode_fr.pdf" download class="cv-dropdown-item">
+                                        <i class="fas fa-file-pdf"></i> CV Français (PDF)
+                                    </a>
+                                    <a href="cv_ghali_lahlou_vscode_en.pdf" download class="cv-dropdown-item">
+                                        <i class="fas fa-file-pdf"></i> CV English (PDF)
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="hero-social">
                         <a href="mailto:ghallahlou26@gmail.com" class="social-link" title="Email">
@@ -686,9 +712,21 @@
                     <h3>Intéressé par mon profil ?</h3>
                     <p>Téléchargez mon CV ou contactez-moi directement</p>
                     <div class="cta-buttons">
-                        <a href="cv_ghali_lahlou.pdf" download class="btn btn-primary">
-                            <i class="fas fa-download"></i> Télécharger CV PDF
-                        </a>
+                        <div class="cv-download-wrapper">
+                            <div class="cv-dropdown">
+                                <button class="btn btn-primary cv-dropdown-btn">
+                                    <i class="fas fa-download"></i> Télécharger CV PDF <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="cv-dropdown-menu">
+                                    <a href="cv_ghali_lahlou_vscode_fr.pdf" download class="cv-dropdown-item">
+                                        <i class="fas fa-file-pdf"></i> CV Français (PDF)
+                                    </a>
+                                    <a href="cv_ghali_lahlou_vscode_en.pdf" download class="cv-dropdown-item">
+                                        <i class="fas fa-file-pdf"></i> CV English (PDF)
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                         <a href="mailto:ghallahlou26@gmail.com" class="btn btn-secondary">
                             <i class="fas fa-envelope"></i> Envoyer un Email
                         </a>
@@ -727,6 +765,30 @@
     <button id="backToTop" class="back-to-top">
         <i class="fas fa-arrow-up"></i>
     </button>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-bottom-nav" id="mobileBottomNav">
+        <a href="#hero" class="mobile-nav-item">
+            <i class="fas fa-home"></i>
+            <span>Accueil</span>
+        </a>
+        <a href="#about" class="mobile-nav-item">
+            <i class="fas fa-user"></i>
+            <span>Profil</span>
+        </a>
+        <a href="#skills" class="mobile-nav-item">
+            <i class="fas fa-code"></i>
+            <span>Compétences</span>
+        </a>
+        <a href="#experience" class="mobile-nav-item">
+            <i class="fas fa-briefcase"></i>
+            <span>Expérience</span>
+        </a>
+        <a href="#projects" class="mobile-nav-item">
+            <i class="fas fa-project-diagram"></i>
+            <span>Projets</span>
+        </a>
+    </nav>
 
     <script src="script.js"></script>
 </body>
